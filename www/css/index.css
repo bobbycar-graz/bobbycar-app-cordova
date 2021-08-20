@@ -1,0 +1,317 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+  -webkit-tap-highlight-color: rgba(
+    0,
+    0,
+    0,
+    0
+  ); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+html {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background-color: #202227;
+}
+
+body {
+  -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+  user-select: none;
+  background-color: #e4e4e4;
+  font-family: system-ui, -apple-system, -apple-system-font, "Segoe UI",
+    "Roboto", sans-serif;
+  font-size: 12px;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  /* Padding to avoid the "unsafe" areas behind notches in the screen */
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+    env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  text-transform: uppercase;
+  width: 100%;
+  transition: opacity 0.5s ease;
+}
+
+nav {
+  background-color: #202227;
+  height: 4rem;
+  position: fixed;
+  width: 100%;
+  color: white;
+  display: flex;
+  top: 0;
+}
+
+main {
+  background-color: #2d3037;
+  height: calc(100vh - 4rem - 20px);
+  margin-top: 4rem;
+  color: white;
+  padding: 10px;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.navbar-title {
+  font-weight: 500;
+}
+
+.navbar-item {
+  text-decoration: none;
+  color: rgb(122, 122, 122);
+  border: none;
+  transition: color 0.2s ease;
+}
+
+.navbar-item.locked {
+  color: rgb(73, 73, 73);
+}
+
+.navbar-item.current {
+  border-bottom: 2px solid white;
+  color: white;
+}
+
+ul.navbar > li {
+  list-style-type: none;
+  display: inline;
+  padding: 0 5px;
+  margin: auto;
+}
+
+ul.navbar {
+  width: 100%;
+  padding: 0;
+  display: flex;
+}
+
+.expand-press {
+  padding: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0px;
+  overflow: visible;
+  padding: 0px;
+  text-align: center;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.event {
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 12px;
+  margin: 0px 30px;
+  padding: 2px 0px;
+}
+
+.event.listening {
+  background-color: #333333;
+  display: block;
+}
+
+.event.received {
+  background-color: #4b946a;
+  display: none;
+}
+
+#deviceready.ready .event.listening {
+  display: none;
+}
+#deviceready.ready .event.received {
+  display: block;
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: fade 3000ms infinite;
+  -webkit-animation: fade 3000ms infinite;
+}
+
+button.btn:focus,
+button.btn:hover {
+  background-color: #111214;
+}
+
+button.btn {
+  margin: 0 auto;
+  display: block;
+  width: 90vw;
+  height: 55px;
+  background-color: #202227;
+  color: white;
+  border: 0;
+  border-radius: 0.5em;
+  transition: background 0.6s ease;
+}
+
+div.btn {
+  position: absolute;
+  bottom: 25px;
+}
+
+page {
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.devices-title {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
+}
+
+.start-scan {
+  font-size: 0.9rem;
+}
+
+.ble-device-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  margin-top: 0;
+  height: 70vh;
+  overflow: scroll;
+}
+
+.connect-button {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 3.7rem;
+}
+
+.ble-device-list > li {
+  background-color: #1b1c20;
+}
+
+.ble-device-list > li > button {
+  color: white;
+  padding: 5px;
+}
+
+.ble-device-list > li:nth-child(2n + 1) {
+  background-color: #26292f;
+}
+
+.connect-button > span.name {
+  text-align: start;
+}
+
+.connect-button > span.id {
+  text-align: end;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.connect-button > span {
+  width: 100%;
+  display: block;
+  font-size: larger;
+}
+
+div.alert {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  width: 90%;
+  text-align: center;
+  height: 3.7rem;
+  line-height: 3.7rem;
+  background-color: #e60707;
+  border-radius: 8px;
+  bottom: 90px;
+  position: absolute;
+}
+
+/*---[ Livedata ]---*/
+livedata {
+  text-transform: none;
+  display: none;
+  background-color: #1f2127;
+  border-radius: 8px;
+  padding: 10px;
+  width: 90%;
+  text-align: center;
+}
+
+front {
+  margin: 2px 0px 2px 2px;
+  border-right: 1px solid white;
+  width: 50%;
+  font-size: 1rem;
+}
+
+back {
+  margin: 2px 2px 2px 0px;
+  border-left: 1px solid white;
+  width: 50%;
+  font-size: 1rem;
+}
+.h {
+  font-size: initial;
+  padding: 2px;
+}
+
+.h.back,
+.h.front {
+  border-bottom: 1px solid white;
+  margin-bottom: 5px;
+}
+
+.h.left,
+.h.right {
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.486);
+}
+
+.disconnect-ble {
+  background-color: #840000 !important;
+}
+
+.livedata-title {
+  width: 97%;
+  border-bottom: 1px solid white;
+  margin-bottom: 7px;
+}

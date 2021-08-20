@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Bobbycar</title>
+</head>
+
+<body>
+    <div class="app">
+        <nav>
+            <ul class="navbar">
+                <li>
+                    <a class="expand-press navbar-item"><span class="navbar-title">Connect</span></a>
+                </li>
+                <li>
+                    <a class="expand-press navbar-item"><span class="navbar-title">Livedata</span></a>
+                </li>
+                <li>
+                    <a class="expand-press navbar-item"><span class="navbar-title">Remotecontrol</span></a>
+                </li>
+                <li>
+                    <a class="expand-press navbar-item"><span class="navbar-title">Settings</span></a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <page name="connect">
+                <h2 class="devices-title">Devices</h2>
+                <ul class="ble-device-list">
+                </ul>
+                <div class="alert">
+                    <alert condition="no-bobbycar-service-discovered">
+                        No bobbycar-service discovered.
+                    </alert>
+                </div>
+                <div class="alert">
+                    <alert condition="ble-disconnected-err">
+                        BLE-Device disconnected: <err_str></err_str>
+                    </alert>
+                </div>
+
+                <div class="btn">
+                    <button class="btn start-scan">Start Scan</button>
+                </div>
+            </page>
+            <page name="livedata">
+                <h1 class="livedata-title">Livedata</h1>
+                <livedata>
+                    <front>
+                        <h2 class="h front">Front</h2>
+                        <voltage>
+                            <value></value>V
+                        </voltage>
+                        <temperature>
+                            <value></value>°C
+                        </temperature>
+                        <h5 class="h left">Left</h5>
+                        <left>
+                            <error>
+                                <value></value>
+                            </error>
+                            <speed>
+                                <value></value>km/h
+                            </speed>
+                            <ampere>
+                                <value></value>A
+                            </ampere>
+                        </left>
+                        <h5 class="h right">Right</h5>
+                        <right>
+                            <error>
+                                <value></value>
+                            </error>
+                            <speed>
+                                <value></value>km/h
+                            </speed>
+                            <ampere>
+                                <value></value>A
+                            </ampere>
+                        </right>
+                    </front>
+                    <back>
+                        <h2 class="h back">Back</h2>
+                        <voltage>
+                            <value></value>V
+                        </voltage>
+                        <temperature>
+                            <value></value>°C
+                        </temperature>
+                        <h5 class="h left">Left</h5>
+                        <left>
+                            <error>
+                                <value></value>
+                            </error>
+                            <speed>
+                                <value></value>km/h
+                            </speed>
+                            <ampere>
+                                <value></value>A
+                            </ampere>
+                        </left>
+                        <h5 class="h right">Right</h5>
+                        <right>
+                            <error>
+                                <value></value>
+                            </error>
+                            <speed>
+                                <value></value>km/h
+                            </speed>
+                            <ampere>
+                                <value></value>A
+                            </ampere>
+                        </right>
+                    </back>
+                </livedata>
+                <div class="alert">
+                    <alert condition="bobbycar-invalid-data">
+                        The data received by the bobbycar is either incomplete or invalid. '<err_str></err_str>'
+                    </alert>
+                </div>
+                <div class="btn">
+                    <button class="btn disconnect-ble">Disconnect BLE</button>
+                </div>
+            </page>
+            <page name="remotecontrol">
+                Remote control
+            </page>
+            <page name="settings">
+                Settings
+            </page>
+        </main>
+    </div>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
