@@ -1,5 +1,6 @@
 name: Build cordova
 uses: oxr463/setup-cordova@0.0.2
+on: [push]
 with:
   exec: |
     cordova platform add android && \
