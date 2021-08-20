@@ -28,6 +28,6 @@ a: [fl.ampere, fr.ampere, bl.ampere, br.ampere]
 
 # Build the app
 
-To download cordova, run `npm install -g cordova`. After that, you should be able to run `cordova run android --device` (with your android phone plugged in).
+To download cordova, run `npm install -g cordova`. After that, you have to install the android sdk and java jdk. For that, [please follow this guide.](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html). Now you should be able to run `cordova run android --device` (with your android phone plugged in).
 
 For iOS, you have to add the iOS-platform to cordova. For that, [please follow this guide.](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html)
