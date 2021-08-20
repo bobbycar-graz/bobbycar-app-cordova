@@ -15,11 +15,11 @@ Example set-wifi message from app:
 {"type":"wifi","wifi_index":0,"wifi_ssid":"bobbycar","wifi_pass":"12345678"}
 ```
 
-v: [front.batVoltage, back.batVoltage]
-t: [front.boardTemp, back.boardTemp]
-e: [fl.error, fr.error, bl.error, br.error]
-s: [fl.speed, fr.speed, bl.speed, br.speed]
-a: [fl.ampere, fr.ampere, bl.ampere, br.ampere]
+- v: [front.batVoltage, back.batVoltage]
+- t: [front.boardTemp, back.boardTemp]
+- e: [fl.error, fr.error, bl.error, br.error]
+- s: [fl.speed, fr.speed, bl.speed, br.speed]
+- a: [fl.ampere, fr.ampere, bl.ampere, br.ampere]
 
 # Todo
 
